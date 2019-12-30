@@ -11356,3 +11356,21 @@ a.text-dark:focus {
   }
 }
 
+.counters {
+  margin-right: 10px;
+  font-size: 15px;
+  text-align: center;
+}
+
+.counters strong {
+  display: block;
+  font-size: 1em;
+}
+
+.counters .vote,
+.counters .status,
+.counters .view {
+  width: 60px;
+  height: 60px;
+}
+
