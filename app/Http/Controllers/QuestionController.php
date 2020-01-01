@@ -17,6 +17,8 @@ class QuestionController extends Controller
     {
         $questions=Question::with('user')->latest()->paginate(3);
 
+
+
         return view('questions.index',compact('questions'));
     }
 
@@ -40,8 +42,8 @@ class QuestionController extends Controller
     public function store(AskQuestionRequest $request)
     {
         //dd('store');
-
-        $request->user()->questions()->create($request->only('title','body'));
+           // dd($request->all());
+    $request->user()->questions()->create($request->only('title','body'));
 
         return redirect()->route('questions.index')->with('success','Your question has been submitted');
     
@@ -67,7 +69,9 @@ class QuestionController extends Controller
      */
     public function edit(Question $question)
     {
-        //
+
+
+        return view('questions.edit',compact('question'));
     }
 
     /**
@@ -77,9 +81,11 @@ class QuestionController extends Controller
      * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Question $question)
+    public function update(AskQuestionRequest $request, Question $question)
     {
-        //
+         $question->update($request->only('title','body'));
+
+         return redirect()->route('questions.index')->with('success','Your questionn has been updated');
     }
 
     /**
