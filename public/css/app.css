@@ -11392,3 +11392,7 @@ a.text-dark:focus {
   color: #fff;
 }
 
+form.form-delete {
+  display: inline;
+}
+
