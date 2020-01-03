@@ -42,6 +42,13 @@ class Answer extends Model
          $answer->question->increment('answers_count');
         });
 
+        
+            // when ever answer is deleted
+        // it decrement the anser count
+        static::deleted(function($answer){
+         $answer->question->decrement('answers_count');
+        });
+
 
      }
 }
