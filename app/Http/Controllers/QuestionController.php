@@ -62,6 +62,8 @@ class QuestionController extends Controller
     public function show(Question $question)
 
     {
+        // getting data through slug
+        // setup boot slug
         $question->increment('views');
         return view('questions.show',compact('question'));
 
