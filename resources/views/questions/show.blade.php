@@ -68,7 +68,9 @@
     
     @include('answers.index',[
         'answers'=>$question->answers,
-        'answers_count'=>$question->answers_count]);
+        'answers_count'=>$question->answers_count])
   
+    @include('answers.create')
+
 </div>
 @endsection
