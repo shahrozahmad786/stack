@@ -1,17 +1,22 @@
+@extends('layouts.app')
 
-
+@section('content')
+<div class="container">
   <div class="row mt-4">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
                     <div class="card-title">
-                        <h3>Your Answer</h3>
+                        <h3>Question:</h3><strong>{{$question->title}}</strong></h1>
 
-                        <hr>
-    <form action="{{route('questions.answers.store',$question->id)}}" method="POST">
-                @csrf
+                                            <hr>
+    <form action="{{route('questions.answers.update',[$question->id,$answer->id])}}" method="POST">
+
+      @method('PATCH')
+
+       @csrf
                <div class="form-group">
-                   <textarea class="form-control {{$errors->has('body') ? 'is-invalid' : " "}}" name="body"  rows="7" >
+                   <textarea class="form-control {{$errors->has('body') ? 'is-invalid' : " "}}" name="body"  rows="7" >{{old('body',$answer->body)}}
                        
                    </textarea>
                    @if($errors->has('body'))
@@ -24,17 +29,25 @@
                </div>
 
                <div class="form-group">
-                   <button  type="submit" class="btn btn-lg btn-outline-primary">Submit Answer
+                   <button  type="submit" class="btn btn-lg btn-outline-primary">Update Answer
                    </button>
                </div>
+             </form>
                 
 
 
-            </form>
-                       
+
+
+              
+             
                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+@endsection
+
+  
