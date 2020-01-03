@@ -20,7 +20,7 @@
                           <strong><h3>⮟</h3></strong>
                         </a>
 
-                        <a title="Mark As Best Answer" class="vote-accepted">
+                        <a title="Mark As Best Answer" class="{{$answer->status}}">
                          <strong><h2>✔</h2></strong>
                          
                         </a>
