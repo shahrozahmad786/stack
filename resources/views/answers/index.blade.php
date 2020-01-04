@@ -19,11 +19,37 @@
                         <a title="This answer is not useful" class="vote-down off">
                           <strong><h3>⮟</h3></strong>
                         </a>
+                          
 
-                        <a title="Mark As Best Answer" class="{{$answer->status}}">
+                          @can('accept',$answer)
+                        <a title="Mark As Best Answer" 
+                        class="{{$answer->status}}" 
+                        onclick="event.preventDefault();document.getElementById('accept-answer-{{$answer->id}}').submit()">
                          <strong><h2>✔</h2></strong>
                          
                         </a>
+
+                        <form id ="accept-answer-{{$answer->id}}" action="{{route('answers.accept',$answer->id)}}" method="Post" style="display: none">
+
+                          @csrf
+                          
+
+                          
+                        </form>
+
+                        @else
+                           @if($answer->is_best)
+
+                           <a title="This question owner is accepted As Best Answer" 
+                              class="{{$answer->status}}">
+                               <strong><h2>✔</h2></strong>
+                         
+                            </a>
+
+ 
+                           @endif
+
+                        @endcan
                         
                     </div> 
                             <div class="media-body">
