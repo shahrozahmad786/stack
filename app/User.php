@@ -62,4 +62,12 @@ class User extends Authenticatable
 
         
      }
+
+
+     public function favourites()
+     {
+        return $this->belongsToMany(Qeustion::class,'favourites')->withTimestamps();
+
+        // Favourites is table name
+     }
 }

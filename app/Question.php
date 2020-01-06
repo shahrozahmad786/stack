@@ -69,6 +69,31 @@ class Question extends Model
            $this->save();
      }
 
+     public function favourites()
+     {
+        return $this->belongsToMany(User::class,'favourites')->withTimestamps();
+        // favourites is a pivoted table 
+     }
+
+     public function isFavourited()
+     {
+        return $this->favourites()->where('user_id',auth()->id())->count() > 0;
+     }  
+
+       public function getIsFavouritedAttribute() //accessors
+     {
+        return $this->isFavourited();
+     }
+
+
+       public function getFavouritesCountAttribute() //accessors
+     {
+        return $this->favourites->count();
+     }
+
+
+
+
 
 
 }
